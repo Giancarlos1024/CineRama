@@ -1,0 +1,25 @@
+
+.Asientos {
+    height: 30px;
+    width: 30px;
+    background-color: white;
+    border-radius: 5px;
+    margin: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    
+}
+.Asientos:hover {
+    box-shadow: 4px 4px 4px #951d1d;
+}
+h4 {
+    color: white;
+}
+#admin {
+    border-radius: 50%;
+    border: solid black 2px ;
+    height: 40px;
+    cursor: pointer;
+}

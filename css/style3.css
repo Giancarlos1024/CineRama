@@ -1,0 +1,80 @@
+﻿/* Estilos Generales. */
+body {
+    background-color: black;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+a.hpvblanco {
+    color: white;
+}
+/* Estilos Reutilizables. */
+.alinear {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+}
+
+/* Barra de Navegación.*/
+.cont1 {
+    background-color: #951d1d;
+}
+.colB, .colD, .colE, .colF, .colG, .colH, .colI{
+    background-color: white;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.colB:hover, .colD:hover, .colF:hover, .colG:hover, .colH:hover, .colI:hover {
+    filter: invert(100%);
+}
+.colE {
+    background-color: black;
+    color: white;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.equis {
+    cursor: pointer;
+}
+/*  Estilo Para Caja Blanca.*/
+.cont2 {
+    background-color: white;
+    width: 70%;
+    margin: 20px 0px 20px 0px;
+    border-radius: 5px;
+}
+.cont2:hover {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+}
+
+/* Tarjetas de Peliculas. */
+
+.card{
+    margin: 5px;
+}
+.card:hover {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+}
+.card-img-top{
+    margin-top: 10px;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+a.hpvblanco {
+    color: white;
+}
+#admin {
+    border-radius: 50%;
+    border: solid black 2px ;
+    height: 40px;
+    cursor: pointer;
+}

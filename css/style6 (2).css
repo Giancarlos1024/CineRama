@@ -1,0 +1,94 @@
+/* Estilos Generales. */
+body {
+    background-color: black;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+a.hpvblanco {
+    color: white;
+}
+/* Estilos Reutilizables. */
+.alinear {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+}
+
+/* Barra de Navegación.*/
+.cont1 {
+    background-color: #951d1d;
+}
+.colB, .colD, .colE, .colF, .colG, .colH{
+    background-color: white;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.colB:hover, .colD:hover, .colE:hover, .colF:hover, .colG:hover, .colH:hover {
+    filter: invert(100%);
+}
+.colI {
+    background-color: black;
+    color: white;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.equis {
+    cursor: pointer;
+}
+/*  Estilo Para Caja Blanca.*/
+.cont2 {
+    background-color: white;
+    width: 70%;
+    margin: 20px 0px 20px 0px;
+    border-radius: 5px;
+}
+.cont2:hover {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+}
+#pagoMovil {
+    height: 500px;
+    width: auto;
+    border-radius: 10px;
+}
+.colInfo {
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    height: 400px;
+    width: 500px;
+    font-size: 17pt;
+    padding: 20px;
+}
+.colPagoMovil {
+    color: white;
+    margin-left: 50px;
+    justify-items: center;
+}
+h4 {
+    color: white;
+}
+.instruc {
+    display: flex;
+    justify-content: center;
+}
+.instruc2 {
+    display: flex;
+    justify-self: center;
+}
+.colInfo:hover {
+    box-shadow: 0px 0px 20px white;
+}
+#pagoMovil:hover {
+    box-shadow: 0px 0px 20px white;
+}

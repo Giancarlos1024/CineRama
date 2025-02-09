@@ -1,0 +1,35 @@
+body {
+	background-color: #232323;
+}
+
+h1 {
+	background-color: beige;
+}
+
+span {
+	background-color: black;
+}
+
+.parrafo1 {
+	background-color: gray;
+}
+
+.img1 {
+	height: 280px;
+	width: 280px;
+	top: 100px;
+	border-radius: 50%;
+}
+.div1 {
+	color: black;
+	height: 280px;
+	width: 280px;
+
+	margin-top: 100px;
+	margin-bottom: 100px;
+
+	
+
+	border: solid 5px red;
+	border-radius: 50%;
+}

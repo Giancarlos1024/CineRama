@@ -1,0 +1,107 @@
+/* Estilos Generales.*/
+body {
+    background-color: black;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+a.hpvblanco {
+    color: white;
+}
+/* Estilos Reutilizables. */
+.alinear{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+}
+.inicio {
+    margin-top: 15px;
+}
+.final {
+    margin-bottom: 15px;
+}
+/* Estilo Para la barra de Navegación.*/
+.cont1 {
+    background-color: #951d1d;
+}
+/*Elementos de la barra de nav.*/
+.colB, .colD, .colE, .colG, .colH, .colI{
+    background-color: white;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.colB:hover, .colD:hover, .colE:hover, .colG:hover, .colH:hover, .colI:hover{
+     filter: invert(100%);
+}
+#admin {
+    border-radius: 50%;
+    border: solid black 2px ;
+    height: 40px;
+    cursor: pointer;
+}
+/* Elemento Activo de la Barra de Navegación. */
+.colF {
+    background-color: black;
+    color: white;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/* Imagen Principal.*/
+.spider {
+    width: 100%;
+    height: auto;
+    margin: 10px;
+}
+.spider:hover{
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+}
+/* Caja Blanca de Mensaje Principal.*/
+.cont2 {
+    background-color: white;
+    width: 70%;
+    border-radius: 10px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+.cont2:hover{
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+}
+/*Caja Contenedora de los Formularios.*/
+.cajaLogin {
+    background-color: #323232;
+    width: 65%;
+    border-radius: 10px;
+    color: white;
+    padding: 10px;
+    margin-top: 20px;
+}
+/* Subpartes del login.*/
+.entrar {
+    background-color: black;
+    margin: 5px;
+    border-radius: 10px
+}
+.regist{
+    background-color: black;
+    margin: 5px;
+    border-radius: 10px
+}
+label, input {
+    display: block;
+    margin: 5px;
+}
+input {
+    border-radius: 4px;
+}
+.regist, .entrar{
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+

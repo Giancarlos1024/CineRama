@@ -1,0 +1,68 @@
+﻿/* Estilos Generales. */
+body {
+    background-color: black;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+a.hpvblanco {
+    color: white;
+}
+/* Estilos Reutilizables. */
+.alinear {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+}
+/* Barra de Navegación */
+.cont1 {
+    background-color: #951d1d;
+}
+.colB, .colD, .colE, .colF, .colG, .colH, .colI{
+    background-color: white;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.colB:hover, .colE:hover, .colF:hover, .colG:hover, .colH:hover, .colI:hover{
+    filter: invert(100%);
+}
+.colD {
+    background-color: black;
+    color: white;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.equis {
+    cursor: pointer;
+}
+
+/*  Estilo Para Caja Blanca.*/
+.cont2 {
+    background-color: white;
+    width: 70%;
+    margin: 20px 0px 20px 0px;
+    border-radius: 5px;
+}
+.cont2:hover {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+}
+/* Imagen del Carrusel. */
+img{
+    min-width: none;
+    max-width: 1000px;
+}
+#admin {
+    border-radius: 50%;
+    border: solid black 2px ;
+    height: 40px;
+    cursor: pointer;
+}
+
+

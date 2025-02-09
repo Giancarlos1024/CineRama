@@ -57,25 +57,25 @@ if (empty($_SESSION['id'])) {
         if ($sql) {
             while ($filas=$sql->fetch_array()) {    
         ?>
-        <div class="col d-flex ">
-            <figure>
-                <img class="capture" src="data:image/jpg;base64,<?php echo base64_encode($filas['comprobante'])?>" alt="">
-                <div class="captureTexto">
-                <p> Fecha y hora de la Función </p>
-                <p> <?php echo date("d-m",strtotime($filas['fecha']))." / ".date("h:i A",strtotime($filas['hora']));?> </p>
-                <p> Precio de la Entrada </p>
-                <p> <?php echo $filas['precio'].",00bs";?> </p>
-                <p> N° De Asientos </p>
-                <p> <?php echo $filas['qty'];?> </p>
-                <p> Monto Total </p>
-                <p> <?php echo $filas['qty']*$filas['precio'].",00bs";?> </p>
-                <form action="" method="post">
+        <div class="col d-flex justify-content-center">
+    <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width: 22rem;">
+        <img class="card-img-top rounded" src="data:image/jpg;base64,<?php echo base64_encode($filas['comprobante'])?>" alt="Comprobante de pago">
+        <div class="card-body text-center">
+            <h5 class="card-title">Detalles de la Función</h5>
+            <p class="card-text"><strong>Fecha y Hora:</strong> <?php echo date("d-m-y",strtotime($filas['fecha']))." / ".date("h:i A",strtotime($filas['hora']));?></p>
+            <p class="card-text"><strong>Precio Entrada:</strong> <?php echo $filas['precio'];?>,00bs</p>
+            <p class="card-text"><strong>N° de Asientos:</strong> <?php echo $filas['qty'];?></p>
+            <p class="card-text"><strong>Monto Total:</strong> <?php echo $filas['qty']*$filas['precio'];?>,00bs</p>
+            
+            <form action="" method="post">
                 <input type="hidden" name="entrada" value="<?php echo $filas['id_entrada'];?>">
-                <input class="btn btn-primary" type="submit" name="btnconfirmar" value="Confirmar"> <input class="btn btn-danger" type="submit" name="btnrechazar" value="Rechazar">
-                </form>
-            </div>
-            </figure>
-        </div><?php
+                <button type="submit" name="btnconfirmar" class="btn btn-success mx-2">✔ Confirmar</button>
+                <button type="submit" name="btnrechazar" class="btn btn-danger mx-2">✖ Rechazar</button>
+            </form>
+        </div>
+    </div>
+</div>
+<?php
             }
         }
         if ($row == 0) {?>

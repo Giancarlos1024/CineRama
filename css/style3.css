@@ -78,3 +78,9 @@ a.hpvblanco {
     height: 40px;
     cursor: pointer;
 }
+
+.opcionButtonVer{
+    border: none;
+    color: royalblue;
+    background: none;
+}

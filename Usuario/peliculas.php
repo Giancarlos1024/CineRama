@@ -51,20 +51,25 @@ if (empty($_SESSION['id'])) {
 
 <!-- Tarjetas de películas. -->
 
-  <div class="container">
+<div class="container">
     <div class="row">
     <?php  
     $sql=$con->query("SELECT * FROM peliculas");
 
     while($filas=$sql->fetch_array()){
-        
-    
+        $descripcion_corta = substr($filas['descripcion'], 0, 50);
+        $descripcion_completa = $filas['descripcion'];
     ?>
     <div class="card" style="width: 18rem;">
       <img src="data:image/jpg;base64,<?php echo base64_encode($filas['img'])?>" class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title alinear"><?php echo $filas['titulo']?></h5>
-        <p class="card-text"><?php echo $filas['descripcion']?></p>
+        <p class="card-text">
+            <span class="short"><?php echo $descripcion_corta; ?>...</span>
+            <span class="full" style="display: none;"><?php echo $descripcion_completa; ?></span>
+            <button class="ver-mas-btn opcionButtonVer" onclick="toggleDescripcion(this)">Ver más</button>
+        </p>
+        
       </div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item"><?php echo $filas['genero1']?></li>
@@ -79,7 +84,26 @@ if (empty($_SESSION['id'])) {
 }
 ?>
 </div>
-  </div>
+</div>
+
+<script>
+function toggleDescripcion(btn) {
+    var container = btn.parentElement;
+    var shortText = container.querySelector(".short");
+    var fullText = container.querySelector(".full");
+
+    if (fullText.style.display === "none") {
+        shortText.style.display = "none";
+        fullText.style.display = "inline";
+        btn.textContent = "Ver menos";
+    } else {
+        shortText.style.display = "inline";
+        fullText.style.display = "none";
+        btn.textContent = "Ver más";
+    }
+}
+</script>
+
    
 </body>
 </html>

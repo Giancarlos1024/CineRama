@@ -43,27 +43,57 @@ include "../db/database.php";
 
 <!-- Noticias. -->
 <div class="container">
-    <div class="row">
+    <div class="ContenedorNoticias">
     <?php
         $sql=$con->query("SELECT * FROM funciones INNER JOIN peliculas ON funciones.id_pelicula=peliculas.id_pelicula");
 
         while ($row=$sql->fetch_array()) {
-            if (strtotime(date($row['fecha'])) >= strtotime(date('Y-m-d'))) {?>
+            if (strtotime(date($row['fecha'])) >= strtotime(date('Y-m-d'))) { 
+                $descripcion_corta = substr($row['descripcion'], 0, 50);
+                $descripcion_completa = $row['descripcion'];
+                ?>
     
-        <div class="col" id="noticia1">
+        <div class="SubNoticias">
             <div class="noticia">
-                    <h3 id="tituloNoticia" class="text-center"><?php echo $row['titulo']?></h3>
-                    <img id="imgNoticia" src="data:image/jpg;base64,<?php echo base64_encode($row['img'])?>" alt="">
-                    <p id="textoNoticia"><?php echo $row['descripcion'].". Una duración de ".$row['duracion']?></p>
-                    <p id="textoNoticia"><?php echo "FECHA: ".date("d/m/Y",strtotime($row['fecha']))."<br>HORA: ".date("h:i A",strtotime($row['hora']))."<br>PRECIO/ENTRADA: ".$row['precio'].",00bs"?></p>
-                    <p class="text-center">¡¡¡No te lo pierdas!!!</p>
+                <h3 class="tituloNoticias"><?php echo $row['titulo']?></h3>
+                <img id="imgNoticia" src="data:image/jpg;base64,<?php echo base64_encode($row['img'])?>" alt="">
+                <p class="descripcionNoticias">
+                    <span class="TextDescripcion">Descripción:</span> 
+                    <span class="short"><?php echo $descripcion_corta; ?>...</span>
+                    <span class="full" style="display: none;"><?php echo $descripcion_completa; ?></span>
+                    
+                    <button class="ver-mas-btn opcionButtonVer" onclick="toggleDescripcion(this)">Ver más</button><br>
+                    <b class="TextDescripcion">Duración:</b> <?php echo $row['duracion'] ?>
+                </p>
+                <p class="fechasNoticias">
+                    <?php echo "FECHA: ".date("d/m/Y",strtotime($row['fecha']))."<br>HORA: ".date("h:i A",strtotime($row['hora']))."<br>PRECIO/ENTRADA: ".$row['precio'].",00bs"?>
+                </p>
+                <p class="text-center">¡¡¡No te lo pierdas!!!</p>
             </div>    
         </div>
     <?php
     }
 }?> 
-        </div>
     </div>
+</div>
+
+<script>
+function toggleDescripcion(btn) {
+    var container = btn.parentElement;
+    var shortText = container.querySelector(".short");
+    var fullText = container.querySelector(".full");
+
+    if (fullText.style.display === "none") {
+        shortText.style.display = "none";
+        fullText.style.display = "inline";
+        btn.textContent = "Ver menos";
+    } else {
+        shortText.style.display = "inline";
+        fullText.style.display = "none";
+        btn.textContent = "Ver más";
+    }
+}
+</script>
 
     </body>
 </html>

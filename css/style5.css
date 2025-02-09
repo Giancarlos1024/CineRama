@@ -55,24 +55,60 @@ a.hpvblanco {
 }
 /* Noticia */
 .noticia {
-    width: 540px;
+    width: 250px;
     background-color: white;
     border-radius: 5px;
     margin: 10px;
     justify-content: center;
     justify-items: center;
+    padding: 10px 0px;
 }
 .noticia:hover {
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
 }
 /* Elementos de la noticia. */
-#tituloNoticia{
-    
+.tituloNoticias{
+    text-align: center;
 }
 #imgNoticia{
-    width: 500px;
-    height: auto;
+    width: 200px;
+    height: 250px;
 }
 #textoNoticia{
-    margin: 20px;
+    padding: 0px;
+    background-color: yellow;
+    width: 100%;
+    text-align: center;
+}
+.descripcionNoticias{
+    font-size: 15px;
+    padding: 5px 25px;
+    width: 100%;
+}
+.fechasNoticias{
+    font-size: 13px;
+    width: 100%;
+    padding-left: 27px;
+}
+.ContenedorNoticias{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.SubNoticias{
+    width: 270px;
+}
+
+.TextDescripcion{
+    font-weight: 500;
+}
+
+
+/*OPCION VER MAS Y VER MENOS */
+
+.opcionButtonVer{
+    border: none;
+    color: royalblue;
+    background: none;
 }

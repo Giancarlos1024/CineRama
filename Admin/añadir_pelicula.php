@@ -52,64 +52,67 @@ if (empty($_SESSION['id'])) {
 
 <!-- Tarjetas de películas. -->
 
-  <div class="container">
+<div class="container">
     <div class="row">
     <?php  
-    $sql=$con->query("SELECT * FROM peliculas");
+    $sql = $con->query("SELECT * FROM peliculas");
 
-    while($filas=$sql->fetch_array()){
-        
-    
+    while ($filas = $sql->fetch_array()) {
+        $descripcion_corta = substr($filas['descripcion'], 0, 50);
+        $descripcion_completa = $filas['descripcion'];
     ?>
     <div class="card" style="width: 18rem;">
-      <img src="data:image/jpg;base64,<?php echo base64_encode($filas['img'])?>" class="card-img-top" alt="...">
+      <img src="data:image/jpg;base64,<?php echo base64_encode($filas['img']) ?>" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5 class="card-title alinear"><?php echo $filas['titulo']?></h5>
-        <p class="card-text"><?php echo $filas['descripcion']?></p>
+        <h5 class="card-title alinear"><?php echo $filas['titulo'] ?></h5>
+        <p class="card-text">
+            <span class="short"><?php echo $descripcion_corta; ?>...</span>
+            <span class="full" style="display: none;"><?php echo $descripcion_completa; ?></span>
+            <button class="ver-mas-btn opcionButtonVer" onclick="toggleDescripcion(this)">Ver más</button>
+        </p>
+        
       </div>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item"><?php echo $filas['genero1']?></li>
-        <li class="list-group-item"><?php echo $filas['genero2']?></li>
+        <li class="list-group-item"><?php echo $filas['genero1'] ?></li>
+        <li class="list-group-item"><?php echo $filas['genero2'] ?></li>
       </ul>
 
       <div class="card-body">
         <form action="" method="post">
-        <input type="hidden" name="pelicula" value="<?php echo $filas['id_pelicula']?>">
-        <input type="submit" name="btneliminar" class="alinear form-control-plaintext" value="Eliminar Pelicula">
+          <input type="hidden" name="pelicula" value="<?php echo $filas['id_pelicula'] ?>">
+          <button type="submit" name="btneliminar" class="btn btn-danger">Eliminar Película</button>
         </form>
       </div>
     </div>  
-<?php
-}
-      if (isset($_POST['btneliminar'])) {
-        $pelicula=$_POST['pelicula'];
-        $sql=$con->query("DELETE FROM peliculas WHERE id_pelicula='$pelicula'");
+    <?php  
+    }
+    if (isset($_POST['btneliminar'])) {
+      $pelicula = $_POST['pelicula'];
+      $sql = $con->query("DELETE FROM peliculas WHERE id_pelicula='$pelicula'");
 
-        if ($sql) {?>
-        <script type="text/javascript">
-          Swal.fire({
-          icon: "success",
-          title: "ÉXITO",
-          text: "PELÍCULA ELIMINADA",
-          showConfirmButton: false,
-          timer: 1500
-          });
-          window.location.href = 'añadir_pelicula.php';
-        </script><?php 
-        }else{?>
-        <script type="text/javascript">
-          Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: "ERROR AL ELIMINAR",
-          showConfirmButton: false,
-          timer: 1500
-          });
-          window.location.href = 'añadir_pelicula.php';
-        </script><?php
-        }
+      if ($sql) {
+          echo "<script>
+              Swal.fire({
+                  icon: 'success',
+                  title: 'ÉXITO',
+                  text: 'PELÍCULA ELIMINADA',
+                  showConfirmButton: false,
+                  timer: 1500
+              }).then(() => window.location.href = 'añadir_pelicula.php');
+          </script>";
+      } else {
+          echo "<script>
+              Swal.fire({
+                  icon: 'error',
+                  title: 'Oops...',
+                  text: 'ERROR AL ELIMINAR',
+                  showConfirmButton: false,
+                  timer: 1500
+              }).then(() => window.location.href = 'añadir_pelicula.php');
+          </script>";
       }
-      ?>      
+  }
+  ?>          
 
     <div class="card cardAgPeli" id="formulario">
       <form action="" method="post" enctype="multipart/form-data">
@@ -117,10 +120,10 @@ if (empty($_SESSION['id'])) {
         <div class="alinear"><input name="imagen" type="file" accept="image/*" required></div>
 
         <div id="agTitulo" class="alinear"><label for=""> Titulo </label></div>
-        <div class="alinear"><input name="titulo" type="text" required></div>
+        <div class="alinear"><input name="titulo" type="text" class="tituloAgregar" required></div>
 
         <div id="agDesc" class="alinear"><label for=""> Descripción </label></div>
-        <div class="alinear"><input name="descripcion" type="text"  id="descInput" required></div>
+        <div class="alinear"><textarea name="descripcion" type="text"  id="descInput" required> </textarea></div>
 
         <div class="alinear"><label for=""> Géneros </label></div>
         <div class="alinear"><select class="w-50" name="genero1" required>
@@ -223,6 +226,24 @@ if (empty($_SESSION['id'])) {
 
 </div>
   </div> 
+
+  <script>
+    function toggleDescripcion(btn) {
+        var container = btn.parentElement;
+        var shortText = container.querySelector(".short");
+        var fullText = container.querySelector(".full");
+
+        if (fullText.style.display === "none") {
+            shortText.style.display = "none";
+            fullText.style.display = "inline";
+            btn.textContent = "Ver menos";
+        } else {
+            shortText.style.display = "inline";
+            fullText.style.display = "none";
+            btn.textContent = "Ver más";
+        }
+    }
+    </script>
 
 </body>
 </html>

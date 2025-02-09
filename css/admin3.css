@@ -32,11 +32,19 @@ h4 {
 }
 .asientosCine{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
 }
 .asientosCine > div{
-    padding: 20px;
+    padding: 1px;
     cursor: pointer;
  
+}
+.filas {
+    display: flex;
+    justify-content: center; /* Centra las filas */
+}
+
+.filas:nth-child(odd) { /* Aplica a filas de 13 asientos */
+    justify-content: space-around;
 }
